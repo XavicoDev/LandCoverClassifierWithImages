@@ -1,14 +1,5 @@
-# Usa una imagen base de Python de Alpine Linux
-FROM python:3.9-alpine
-
-# Actualiza pip
-RUN pip install --no-cache-dir --upgrade pip
-
-# Instala las dependencias necesarias, incluyendo las dependencias de system
-RUN apk add --no-cache \
-    build-base \
-    libffi-dev \
-    openssl-dev
+# Usa una imagen base de Python
+FROM python:3.6-slim
 
 # Establece el directorio de trabajo en /app
 WORKDIR /app
