@@ -1,6 +1,9 @@
 # Usa una imagen base de Python
 FROM python:3.6-slim
 
+# Actualiza pip a la última versión
+RUN /usr/local/bin/python -m pip install --upgrade pip
+
 # Establece el directorio de trabajo en /app
 WORKDIR /app
 
