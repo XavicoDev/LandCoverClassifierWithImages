@@ -1,6 +1,9 @@
 # Usa una imagen base de Python
 FROM python:3.9-slim
 
+# Actualiza pip
+RUN pip install --no-cache-dir --upgrade pip
+
 # Establece el directorio de trabajo en /app
 WORKDIR /app
 
