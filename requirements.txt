@@ -1,5 +1,5 @@
 Flask
 Jinja2
+numpy
 opencv-python
 tensorflow
-numpy
