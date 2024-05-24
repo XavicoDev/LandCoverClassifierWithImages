@@ -1,6 +1,13 @@
 # Usa una imagen base de Python
 FROM python:3.6-slim
 
+# Instala las herramientas de construcción necesarias
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 # Actualiza pip a la última versión
 RUN /usr/local/bin/python -m pip install --upgrade pip
 
