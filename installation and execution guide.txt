@@ -1,0 +1,14 @@
+#crear entorno virtual
+ py -3 -m venv .pmd 
+# activar entorno virtual
+.pmd\Scripts\activate 
+# Habilitar la ejecución de scripts (si en el paso anterior tiene problemas)
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+# instalar flask
+pip install Flask 
+#instalar dependencias
+pip install opencv-python-headless
+pip install numpy
+pip install tensorflow
+# realiza la actualización de pip, que es el administrador de paquetes de Python (puede ser necesariio para instalar tensorflow) 
+python.exe -m pip install --upgrade pip
