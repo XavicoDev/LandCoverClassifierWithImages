@@ -1,0 +1,38 @@
+/* Estilos para el modo oscuro */
+
+body {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+form {
+    border: 1px solid #333;
+    background-color: #333;
+}
+
+label {
+    color: #ffffff;
+}
+
+input[type="file"] {
+    background-color: #555;
+    color: #ffffff;
+}
+
+table {
+    background-color: #333;
+    color: #ffffff;
+}
+
+th {
+    background-color: #222;
+}
+
+.dark-mode-button {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.dark-mode-button:hover {
+    background-color: #555;
+}

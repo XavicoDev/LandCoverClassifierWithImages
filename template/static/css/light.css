@@ -1,0 +1,38 @@
+/* Estilos para el modo claro */
+
+body {
+    background-color: #f9f9f9;
+    color: #000000;
+}
+
+form {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+label {
+    color: #000000;
+}
+
+input[type="file"] {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+table {
+    background-color: #f9f9f9;
+    color: #000000;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.dark-mode-button {
+    background-color: #f9f9f9;
+    color: #000000;
+}
+
+.dark-mode-button:hover {
+    background-color: #ccc;
+}
