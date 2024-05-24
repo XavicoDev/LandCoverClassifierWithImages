@@ -4,12 +4,6 @@ FROM python:3.9-slim
 # Actualiza pip
 RUN pip install --no-cache-dir --upgrade pip
 
-# Crea un entorno virtual
-RUN python -m venv venv
-
-# Instala las dependencias dentro del entorno virtual
-RUN /bin/bash -c "source venv/bin/activate && pip install --no-cache-dir -r requirements.txt"
-
 # Establece el directorio de trabajo en /app
 WORKDIR /app
 
