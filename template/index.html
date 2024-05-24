@@ -4,80 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clasificador de coberturas agrícolas</title>
-    <link id="stylesheet" rel="stylesheet" href="{{ url_for('static',filename='css/light.css') }}">
-    <!-- Hoja de estilo por defecto para el modo claro -->
+    <title>Clasificador de Coberturas Agrícolas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <style>
-        /* Estilos adicionales para el botón y elementos comunes */
-        .dark-mode-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #1e1e1e;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.5s ease, color 0.5s ease;
-            /* Animación de transición */
-        }
-
-        .dark-mode-button:hover {
-            background-color: #555;
-        }
-
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
             padding: 20px;
-            transition: background-color 0.5s ease, color 0.5s ease;
-            /* Animación de transición */
+            background-color: #ffffff; /* Color de fondo blanco */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
 
         h1 {
             text-align: center;
+            color: #333;
+            margin-bottom: 20px;
         }
 
-        .container {
-            max-width: 500px;
-            margin: auto;
+        .description {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .classification-list {
+            margin-bottom: 20px;
+            color: #444;
+            text-align: left;
+        }
+
+        .classification-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .classification-list li:before {
+            content: "•";
+            margin-right: 5px;
+            color: #007BFF; /* Color azul para los puntos */
+        }
+
+        .steps {
+            margin: 20px 0;
+            color: #444;
+        }
+
+        .steps li {
+            margin-bottom: 10px;
         }
 
         form {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
         label {
             font-weight: bold;
+            color: #333;
         }
 
         input[type="file"] {
-            display: block;
-            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
         }
 
         input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
             border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
             cursor: pointer;
-            float: right;
+            transition: background-color 0.3s ease;
         }
 
-        input[type="button"] {
-            background-color: #f44336;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            float: left;
+        input[type="submit"]:hover {
+            background-color: #0056b3;
         }
 
         .result-container {
@@ -87,98 +103,78 @@
 
         .result {
             margin-bottom: 20px;
+            color: #333;
+        }
+
+        .result h2 {
+            margin-bottom: 10px;
+            color: #007BFF;
         }
 
         img {
             max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
         }
 
         .label {
             font-weight: bold;
+            color: #007BFF;
         }
 
-        .finish {
-            padding: 30px;
+        .footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
         }
     </style>
 </head>
 
 <body>
-    <h1>Clasificador de coberturas agrícolas</h1>
     <div class="container">
+        <h1>Clasificador de Coberturas Agrícolas</h1>
+        <div class="description">
+            <p>Bienvenido al clasificador de coberturas agrícolas. Cargue una imagen de un campo agrícola y el sistema la clasificará en diferentes tipos de coberturas.</p>
+        </div>
+        <div >
+            <p>El clasificador puede identificar los siguientes tipos de coberturas agrícolas:</p>
+            <ul class="steps">
+                <li>Banano</li>
+                <li>Cacao</li>
+                <li>Pastizal</li>
+                <li>Vegetación secundaria</li>
+                <li>Vías de acceso</li>
+            </ul>
+        </div>
+        <div>
+            <p>Para utilizar la aplicación, siga estos pasos sencillos:</p>
+            <ul class="steps">
+                <li>1. Seleccione un archivo de imagen de su campo agrícola.</li>
+                <li>2. Haga clic en "Clasificar Imagen" para procesar la imagen.</li>
+                <li>3. Vea el resultado de la clasificación a continuación.</li>
+            </ul>
+        </div>
+        
         <form action="/upload" method="post" enctype="multipart/form-data">
-            <div>
-                <label style="color: #000000;" for="file">Seleccione un archivo de imagen:</label>
-                <input type="file" id="file" name="file" accept=".png, .jpg, .jpeg" required>
-            </div>
-            <div>
-                <input type="submit" value="Clasificar imagen">
-            </div>
+            <label for="file">Seleccione un archivo de imagen:</label>
+            <input type="file" id="file" name="file" accept=".png, .jpg, .jpeg" required>
+            <input type="submit" value="Clasificar Imagen">
         </form>
         <div class="result-container">
             {% if result %}
             <div class="result">
-                <h2>Resultado de la clasificación</h2>
+                <h2>Resultado de la Clasificación</h2>
                 <p>La imagen se clasifica como: <span class="label">{{ result }}</span></p>
-                <img src="{{ url_for('static', filename='uploaded_image.png') }}" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
-
+                <img src="{{ url_for('static', filename='uploaded_image.png') }}" alt="Imagen cargada">
             </div>
             {% endif %}
         </div>
-        <button class="dark-mode-button" id="modeToggle">Toggle Dark Mode</button>
+        <div class="footer">
+            &copy; 2024 Clasificador de Coberturas Agrícolas.
+        </div>
     </div>
-    <script>
-        // Verificar si hay una preferencia guardada en la cookie
-        var currentMode = getCookie("mode");
-        // Si no hay preferencia guardada, establecer el modo claro por defecto
-        if (!currentMode) {
-            currentMode = "light";
-        }
-        // Aplicar el estilo según la preferencia actual
-        toggleMode(currentMode);
-
-        // Función para cambiar el modo
-        function toggleMode(mode) {
-            var stylesheet = document.getElementById('stylesheet');
-            if (mode === "dark") {
-                stylesheet.href = "{{ url_for('static', filename='css/dark.css') }}";
-            } else {
-                stylesheet.href = "{{ url_for('static', filename='css/light.css') }}";
-            }
-            // Guardar la preferencia en la cookie
-            setCookie("mode", mode, 30); // La cookie expira en 30 días
-        }
-
-        // Función para obtener el valor de una cookie
-        function getCookie(name) {
-            var nameEQ = name + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-            }
-            return null;
-        }
-
-        // Función para establecer el valor de una cookie
-        function setCookie(name, value, days) {
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-            }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
-
-        // Escuchar el clic en el botón para cambiar el modo
-        document.getElementById("modeToggle").addEventListener("click", function () {
-            var newMode = (currentMode === "light") ? "dark" : "light";
-            toggleMode(newMode);
-            currentMode = newMode;
-        });
-    </script>
 </body>
 
 </html>
