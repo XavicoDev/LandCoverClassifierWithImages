@@ -8,9 +8,7 @@ RUN pip install --no-cache-dir --upgrade pip
 RUN apk add --no-cache \
     build-base \
     libffi-dev \
-    openssl-dev \
-    && pip install --no-cache-dir -r requirements.txt \
-    && apk del build-base libffi-dev openssl-dev
+    openssl-dev
 
 # Establece el directorio de trabajo en /app
 WORKDIR /app
