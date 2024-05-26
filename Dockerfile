@@ -1,12 +1,16 @@
+# Utilizar una imagen base oficial de Python 3.8 slim
 FROM python:3.8-slim
 
+# Establecer el directorio de trabajo
 WORKDIR /app
 
-# Copia y instala solo las dependencias esenciales primero
+# Copiar solo requirements.txt primero para aprovechar el caché de Docker
 COPY requirements.txt /app/requirements.txt
+
+# Instalar las dependencias del proyecto
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-# Luego copia el resto del código de la aplicación
+# Copiar el resto del código de la aplicación
 COPY . .
 
 # Exponer el puerto 8080
