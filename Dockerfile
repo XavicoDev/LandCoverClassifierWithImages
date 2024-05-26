@@ -18,7 +18,7 @@ WORKDIR /app
 COPY requirements.txt /app
 
 # Instala las dependencias necesarias
-RUN pip install requirements.txt
+RUN pip install -r requirements.txt
 
 # Copia el contenido de la aplicación a la imagen de Docker en /app
 COPY . /app
